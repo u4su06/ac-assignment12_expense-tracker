@@ -1,0 +1,30 @@
+<form action="/records" method="POST">
+  <p>
+    <label>名稱*：
+      <input type="text" placeholder="name" name="name">
+    </label>
+  </p>
+  <p>
+    <label>日期*：
+      <input type="date" placeholder="date" name="date">
+    </label>
+  </p>
+  <p>
+    <label>類別*：
+      <select name="category">
+        <option value="家居物業">家居物業</option>
+        <option value="交通出行">交通出行</option>
+        <option value="休閒娛樂">休閒娛樂</option>
+        <option value="餐飲食品">餐飲食品</option>
+        <option value="其他">其他</option>
+      </select>
+    </label>
+  </p>
+  <p>
+    <label>金額*：
+      <input type="text" placeholder="amount" name="amount">
+    </label>
+  </p>
+
+  <p><button type="submit">新增支出</button></p>
+</form>
