@@ -7,6 +7,7 @@ const bodyParser = require('body-parser') // 引用 body-parser
 const Record = require('./models/record.js') // 載入 record model
 
 const app = express()
+
 mongoose.connect('mongodb://localhost/Expense', { useNewUrlParser: true, useUnifiedTopology: true }) // 設定連線到 mongoDB
 
 // 取得資料庫連線狀態
@@ -50,6 +51,42 @@ app.post('/records', (req, res) => {
     amount: newItem.amount,
   })
     .then(() => res.redirect('/')) // 新增完成後導回首頁
+    .catch(error => console.log(error))
+})
+
+// edit 頁面，顯示特定一筆資料
+app.get('/records/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .lean()
+    .then((record) => res.render('edit', { record }))
+    // .then((record) => console.log(record))
+    .catch(error => console.log(error))
+})
+
+// edit 動作，修改資料並返回首頁
+app.post('/records/:id/edit', (req, res) => {
+  const id = req.params.id
+  const item = req.body
+  return Record.findById(id)
+    .then(record => {
+      record.name = item.name
+      record.date = item.date
+      record.category = item.category
+      record.categoryEN = item.categoryEN
+      record.amount = item.amount
+      return record.save()
+    })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+// 刪除一筆資料
+app.post('/todos/:id/delete', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .then(record => record.remove())
+    .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 

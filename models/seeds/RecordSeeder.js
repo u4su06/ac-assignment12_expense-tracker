@@ -15,6 +15,7 @@ db.once('open', () => {
       name: recordList[i].name,
       date: recordList[i].date,
       category: recordList[i].category,
+      categoryEN: recordList[i].categoryEN,
       amount: recordList[i].amount,
     })
   }

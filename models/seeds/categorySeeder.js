@@ -13,6 +13,7 @@ db.once('open', () => {
   for (let i = 0; i < categoryList.length; i++) {
     Category.create({
       category: categoryList[i].name,
+      categoryEN: categoryList[i].nameEN,
       categoryIcon: categoryList[i].icon,
     })
   }

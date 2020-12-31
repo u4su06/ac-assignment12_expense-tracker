@@ -5,6 +5,9 @@ const categorySchema = new Schema({
   category: {
     type: String,
   },
+  categoryEN: {
+    type: String,
+  },
   categoryIcon: {
     type: String,
   },

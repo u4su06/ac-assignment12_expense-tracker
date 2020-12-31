@@ -2,27 +2,27 @@
   "category": [
     {
       "name": "家居物業",
-      "nameEn": "home",
+      "nameEN": "home",
       "icon": "fas fa-home"
     },
     {
       "name": "交通出行",
-      "nameEn": "transportation",
+      "nameEN": "transportation",
       "icon": "fas fa-shuttle-van"
     },
     {
       "name": "休閒娛樂",
-      "nameEn": "entertainment",
+      "nameEN": "entertainment",
       "icon": "fas fa-grin-beam"
     },
     {
       "name": "餐飲食品",
-      "nameEn": "food",
+      "nameEN": "food",
       "icon": "fas fa-utensils"
     },
     {
       "name": "其他",
-      "nameEn": "other",
+      "nameEN": "other",
       "icon": "fas fa-pen"
     }
   ]
