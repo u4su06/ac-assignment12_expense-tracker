@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser') // 引用 body-parser
 
 const Record = require('./models/record.js') // 載入 record model
+const methodOverride = require('method-override') // 載入 method-override
 
 const app = express()
 
@@ -26,11 +27,14 @@ app.set('view engine', 'hbs')
 
 // 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
 app.use(bodyParser.urlencoded({ extended: true }))
+// 設定每一筆請求都會透過 methodOverride 進行前置處理
+app.use(methodOverride('_method'))
 
 // 設定首頁路由
 app.get('/', (req, res) => {
   Record.find() // 取出 record model 裡的所有資料
     .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
+    .sort({ _id: 'desc' })
     .then(records => res.render('index', { records })) // 將資料傳給 index 樣板
     .catch(error => console.error(error)) // 錯誤處理
 })
@@ -65,7 +69,7 @@ app.get('/records/:id/edit', (req, res) => {
 })
 
 // edit 動作，修改資料並返回首頁
-app.post('/records/:id/edit', (req, res) => {
+app.put('/records/:id', (req, res) => {
   const id = req.params.id
   const item = req.body
   return Record.findById(id)
@@ -73,7 +77,6 @@ app.post('/records/:id/edit', (req, res) => {
       record.name = item.name
       record.date = item.date
       record.category = item.category
-      record.categoryEN = item.categoryEN
       record.amount = item.amount
       return record.save()
     })
@@ -82,7 +85,7 @@ app.post('/records/:id/edit', (req, res) => {
 })
 
 // 刪除一筆資料
-app.post('/todos/:id/delete', (req, res) => {
+app.delete('/todos/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .then(record => record.remove())
