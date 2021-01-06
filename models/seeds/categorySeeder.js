@@ -1,12 +1,7 @@
-const mongoose = require('mongoose')
 const Category = require('../category.js') // 載入 model
-mongoose.connect('mongodb://localhost/Expense', { useNewUrlParser: true, useUnifiedTopology: true })
-const db = mongoose.connection
 const categoryList = require('./categoryList.json').category
+const db = require('../../config/mongoose') // 載入連線設定
 
-db.on('error', () => {
-  console.log('mongodb error!')
-})
 db.once('open', () => {
   console.log('mongodb connected! c')
 

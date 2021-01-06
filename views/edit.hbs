@@ -12,11 +12,11 @@
   <p>
     <label>類別*：
       <select name="category">
-        <option value="家居物業" {{#if record.categoryEN }} selected {{/if}}>家居物業</option>
-        <option value="交通出行" {{#if record.categoryEN }} selected {{/if}}>交通出行</option>
-        <option value="休閒娛樂" {{#if record.categoryEN }} selected {{/if}}>休閒娛樂</option>
-        <option value="餐飲食品" {{#if record.categoryEN }} selected {{/if}}>餐飲食品</option>
-        <option value="其他" {{#if record.categoryEN }} selected {{/if}}>其他</option>
+        <option value="家居物業" {{#if options.home }} selected {{/if}}>家居物業</option>
+        <option value="交通出行" {{#if options.transportation }} selected {{/if}}>交通出行</option>
+        <option value="休閒娛樂" {{#if options.entertainment }} selected {{/if}}>休閒娛樂</option>
+        <option value="餐飲食品" {{#if options.food }} selected {{/if}}>餐飲食品</option>
+        <option value="其他" {{#if options.other }} selected {{/if}}>其他</option>
       </select>
     </label>
   </p>
@@ -26,6 +26,6 @@
     </label>
   </p>
 
-  <button type="submit">Save</button>
-  <a href="/">back</a>
+  <button type="submit" class="btn btn-outline-dark">Save</button>
+  <a href="/" class="btn btn-secondary">back</a>
 </form>

@@ -1,15 +1,41 @@
-<a href="./records/new">Create</a>
-<ul>
-  {{#each records}}
-  <li>
-    {{this.name}}
-    {{this.date}}
-    {{this.category}}
-    {{this.amount}}
-    <a href="./records/{{ this._id }}/edit">edit</a>
-    <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
-      <button type="submit">delete</button>
+<div class="row justify-content-center">
+  <div class="category">
+    <form action="./filter" method="GET">
+      <select name="filter" onchange="this.form.submit()">
+        <option value="" selected disabled hidden>種類</option>
+        <option value="家居物業" {{#if options.home }} selected {{/if}}>家居物業</option>
+        <option value="交通出行" {{#if options.transportation }} selected {{/if}}>交通出行</option>
+        <option value="休閒娛樂" {{#if options.entertainment }} selected {{/if}}>休閒娛樂</option>
+        <option value="餐飲食品" {{#if options.food }} selected {{/if}}>餐飲食品</option>
+        <option value="其他" {{#if options.other }} selected {{/if}}>其他</option>
+      </select>
     </form>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="totalAmount">
+    <label>總金額：
+      <input type="text" name="" class="bg-light border border-light text-danger" value="總金額" disabled>
+  </div>
+</div>
+<ul class="list-group">
+  {{#each records}}
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col-auto mr-auto">
+        <h4 style="display: inline; vertical-align: middle;">{{this.name}}</h4>
+      </div>
+      {{this.date}}
+      {{this.category}}
+      {{this.amount}}
+      <a class="btn btn-outline-dark" href="./records/{{ this._id }}/edit">edit</a>
+      <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+        <button class="btn btn-secondary" type="submit">delete</button>
+      </form>
+    </div>
   </li>
   {{/each}}
 </ul>
+<div class="row justify-content-center">
+  <a href="./records/new" class="btn btn-outline-dark col-1">Create</a>
+</div>

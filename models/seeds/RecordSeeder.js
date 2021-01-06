@@ -1,12 +1,7 @@
-const mongoose = require('mongoose')
 const Record = require('../record.js') // 載入 model
-mongoose.connect('mongodb://localhost/Expense', { useNewUrlParser: true, useUnifiedTopology: true })
-const db = mongoose.connection
 const recordList = require('./record.json')
+const db = require('../../config/mongoose') // 載入連線設定
 
-db.on('error', () => {
-  console.log('mongodb error!')
-})
 db.once('open', () => {
   console.log('mongodb connected! r')
 

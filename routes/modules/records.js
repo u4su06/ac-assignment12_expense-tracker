@@ -3,6 +3,8 @@ const express = require('express')
 const router = express.Router()
 // 載入 record model
 const Record = require('../../models/record')
+// 載入把 category 資料留在表單裡的工具包
+const selectData = require('./selectData')
 
 // new 頁面
 router.get('/new', (req, res) => {
@@ -11,8 +13,7 @@ router.get('/new', (req, res) => {
 
 //  Create 動作
 router.post('/', (req, res) => {
-  const newItem = req.body       // 從 req.body 拿出表單裡的 name 資料
-
+  const newItem = req.body  // 從 req.body 拿出表單裡的 name 資料
   return Record.create({  // 存入資料庫
     name: newItem.name,
     date: newItem.date,
@@ -28,7 +29,10 @@ router.get('/:id/edit', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .lean()
-    .then((record) => res.render('edit', { record }))
+    .then((record) => {
+      const options = selectData(record.category)
+      res.render('edit', { record, options })
+    })
     // .then((record) => console.log(record))
     .catch(error => console.log(error))
 })
