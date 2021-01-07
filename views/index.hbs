@@ -1,7 +1,7 @@
 <ul class="list-group pl-0" style="width:600px;">
   <li class="list-group-item">
     <div class="category row justify-content-center">
-      <form action="./filter" method="GET">
+      <form action="/filter" method="GET">
         <select name="filter" onchange="this.form.submit()">
           <option value="" selected disabled hidden>種類</option>
           <option value="家居物業" {{#if options.home }} selected {{/if}}>家居物業</option>

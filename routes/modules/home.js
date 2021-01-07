@@ -13,8 +13,8 @@ router.get('/', (req, res) => {
     .sort({ _id: 'desc' }) //排序資料
     .then((records) => {
       const recordsWithIcon = addCategoryIcon(records)  //為每一筆資料加上 icon
-      res.render('index', { recordsWithIcon })
-    }) // 將資料傳給 index 樣板
+      res.render('index', { recordsWithIcon }) // 將資料傳給 index 樣板
+    })
     .catch(error => console.error(error)) // 錯誤處理
 })
 
