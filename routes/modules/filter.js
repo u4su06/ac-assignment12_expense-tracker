@@ -7,6 +7,8 @@ const Record = require('../../models/record')
 const addCategoryIcon = require('./addCategoryIcon')
 // 載入把 category 資料留在表單裡的工具包
 const selectData = require('./selectData')
+// 載入篩選資料的工具包
+const filterRecord = require('./filterRecord')
 
 router.get('/', (req, res) => {
   const filter = req.query.filter
@@ -15,7 +17,9 @@ router.get('/', (req, res) => {
     .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
     .sort({ _id: 'desc' }) //排序資料
     .then(records => {
-      const recordsWithIcon = addCategoryIcon(records)  //為每一筆資料加上 icon
+      const addIcon = addCategoryIcon(records)  //加上 icon 
+      const recordsWithIcon = filterRecord(addIcon, filter)  //根據種類篩選資料
+
       res.render('index', { recordsWithIcon, options }) // 將資料傳給 index 樣板
     })
     .catch(error => console.error(error)) // 錯誤處理
