@@ -3,12 +3,11 @@ const express = require('express')
 const router = express.Router()
 // 載入 record model
 const Record = require('../../models/record')
-// 載入加上 category icon 的工具包
-const addCategoryIcon = require('./addCategoryIcon')
-// 載入把 category 資料留在表單裡的工具包
-const selectData = require('./selectData')
-// 載入篩選資料的工具包
-const filterRecord = require('./filterRecord')
+
+const addCategoryIcon = require('./addCategoryIcon')  // 載入加上 category icon 的工具包
+const selectData = require('./selectData')  // 載入把 category 資料留在表單裡的工具包
+const filterRecord = require('./filterRecord')  // 載入篩選資料的工具包
+const totalAmount = require('./totalAmount')  //載入計算總金額的工具包
 
 router.get('/', (req, res) => {
   const filter = req.query.filter
@@ -19,8 +18,8 @@ router.get('/', (req, res) => {
     .then(records => {
       const addIcon = addCategoryIcon(records)  //加上 icon 
       const recordsWithIcon = filterRecord(addIcon, filter)  //根據種類篩選資料
-
-      res.render('index', { recordsWithIcon, options }) // 將資料傳給 index 樣板
+      const total = totalAmount(recordsWithIcon)  //用篩選出來的資料計算總金額
+      res.render('index', { recordsWithIcon, options, total }) // 將資料傳給 index 樣板
     })
     .catch(error => console.error(error)) // 錯誤處理
 })

@@ -3,8 +3,9 @@ const express = require('express')
 const router = express.Router()
 // 載入 record model
 const Record = require('../../models/record')
-// 載入加上 category icon 的工具包
-const addCategoryIcon = require('./addCategoryIcon')
+
+const addCategoryIcon = require('./addCategoryIcon')  // 載入加上 category icon 的工具包
+const totalAmount = require('./totalAmount')  //載入計算總金額的工具包
 
 // 設定首頁路由
 router.get('/', (req, res) => {
@@ -13,7 +14,8 @@ router.get('/', (req, res) => {
     .sort({ _id: 'desc' }) //排序資料
     .then((records) => {
       const recordsWithIcon = addCategoryIcon(records)  //為每一筆資料加上 icon
-      res.render('index', { recordsWithIcon }) // 將資料傳給 index 樣板
+      const total = totalAmount(records)  //用 records 資料計算總金額
+      res.render('index', { recordsWithIcon, total }) // 將資料傳給 index 樣板
     })
     .catch(error => console.error(error)) // 錯誤處理
 })
