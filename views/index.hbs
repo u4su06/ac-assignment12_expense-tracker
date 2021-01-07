@@ -1,4 +1,4 @@
-<ul class="pl-0 mt-5">
+<ul class="list-group pl-0" style="width:600px;">
   <li class="list-group-item">
     <div class="category row justify-content-center">
       <form action="./filter" method="GET">
@@ -15,17 +15,17 @@
   </li>
   <li class="list-group-item">
     <div class="totalAmount row justify-content-center">
-      <label>總金額：
-        <input type="text" name="" class="bg-white border-0 text-danger text-center" value="總金額" disabled>
+      <p class="mb-0">總金額：</p>
+      <input type="text" name="" class="bg-white border-0 text-danger text-center" value="總金額" disabled>
     </div>
   </li>
-  {{#each records}}
+  {{#each recordsWithIcon}}
   <li class="list-group-item">
     <div class="row">
-      <div class="col-3">
-        <i>fontawesome{{this.category}}</i>
+      <div class="col-2 d-flex justify-content-center align-self-center px-0">
+        <h2 class="mb-0"><i class="{{this.icon}}"></i></h2>
       </div>
-      <div class="col-3">
+      <div class="col-3 mr-auto px-0">
         <div class="row">
           <div class="col-12">
             <h4 style="display: inline; vertical-align: middle;">{{this.name}}</h4>
@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div class="col-3 mr-auto d-flex align-items-center">
+      <div class="col-3 d-flex flex-row-reverse align-items-center">
         <h5>
           <i class="fas fa-dollar-sign"></i>
           {{this.amount}}
@@ -47,12 +47,12 @@
           <button class="btn btn-secondary" type="submit"><i class="fas fa-trash-alt"></i></button>
         </form>
       </div>
-
     </div>
   </li>
   {{/each}}
+  <li class="list-group-item">
+    <div class="row justify-content-center">
+      <a href="./records/new" class="btn btn-outline-dark col-auto"><i class="fas fa-plus"></i></a>
+    </div>
+  </li>
 </ul>
-<div class="row justify-content-center">
-  <a href="./records/new" class="btn btn-outline-dark col-1"><i class="fas fa-plus"></i></a>
-</div>
-</div>
