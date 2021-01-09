@@ -1,50 +1,54 @@
 <ul class="list-group pl-0" style="width:600px;">
   <li class="list-group-item">
-    <div class="category row justify-content-center">
-      <form action="/filter" method="GET">
-        <select name="filter" onchange="this.form.submit()">
-          <option value="" selected disabled hidden>種類</option>
-          <option value="家居物業" {{#if options.home }} selected {{/if}}>家居物業</option>
-          <option value="交通出行" {{#if options.transportation }} selected {{/if}}>交通出行</option>
-          <option value="休閒娛樂" {{#if options.entertainment }} selected {{/if}}>休閒娛樂</option>
-          <option value="餐飲食品" {{#if options.food }} selected {{/if}}>餐飲食品</option>
-          <option value="其他" {{#if options.other }} selected {{/if}}>其他</option>
-        </select>
-      </form>
-    </div>
-  </li>
-  <li class="list-group-item">
-    <div class="totalAmount row justify-content-center">
-      <p class="mb-0 align-self-center">總金額：</p>
-      <input type="text" name="" class="bg-white border-0 text-danger text-center" style="font-size: 50px; width:300px;"
-        value="{{total}}" disabled>
-
+    <div class="row">
+      <div class="col-3 row align-items-center justify-content-center">
+        <form action="/filter" method="GET" class="">
+          <select name="filter" onchange="this.form.submit()">
+            <option value="" selected disabled hidden>種類</option>
+            <option value="家居物業" {{#if options.home }} selected {{/if}}>家居物業</option>
+            <option value="交通出行" {{#if options.transportation }} selected {{/if}}>交通出行</option>
+            <option value="休閒娛樂" {{#if options.entertainment }} selected {{/if}}>休閒娛樂</option>
+            <option value="餐飲食品" {{#if options.food }} selected {{/if}}>餐飲食品</option>
+            <option value="其他" {{#if options.other }} selected {{/if}}>其他</option>
+          </select>
+        </form>
+      </div>
+      <div class="col-6 mx-auto row justify-content-center">
+        <p class="mb-0 align-self-center">總金額：</p>
+        <input type="text" name="" class="bg-white border-0 text-danger text-center"
+          style="font-size: 40px; width:190px;" value="{{total}}" disabled>
+      </div>
+      <div class="col-3 my-auto">
+        <a href="./records/new" class="btn btn-outline-dark col-11"><i class="fas fa-plus"></i></a>
+      </div>
     </div>
   </li>
   {{#each recordsWithIcon}}
   <li class="list-group-item">
     <div class="row">
-      <div class="col-2 d-flex justify-content-center align-self-center px-0">
+      <div class="col-3 row justify-content-center align-self-center">
         <h2 class="mb-0"><i class="{{this.icon}}"></i></h2>
       </div>
-      <div class="col-3 mr-auto px-0">
-        <div class="row">
-          <div class="col-12">
-            <h4 style="display: inline; vertical-align: middle;">{{this.name}}</h4>
-          </div>
-          <div class="col-12">
-            {{this.date}}
+      <div class="col-6 mr-auto row justify-content-between">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-12">
+              <h4 style="display: inline; vertical-align: middle;">{{this.name}}</h4>
+            </div>
+            <div class="col-12">
+              {{this.date}}
+            </div>
           </div>
         </div>
+        <div class="col-6 row justify-content-end align-self-center">
+          <h5>
+            <i class="fas fa-dollar-sign"></i>
+            {{this.amount}}
+          </h5>
+        </div>
       </div>
-      <div class="col-3 d-flex flex-row-reverse align-items-center">
-        <h5>
-          <i class="fas fa-dollar-sign"></i>
-          {{this.amount}}
-        </h5>
-      </div>
-      <div class="col-auto">
-        <a class="btn btn-outline-dark" href="./records/{{ this._id }}/edit"><i class="fas fa-pen"></i></a>
+      <div class="col-3 my-auto">
+        <a class="btn btn-outline-dark mr-3" href="./records/{{ this._id }}/edit"><i class="fas fa-pen"></i></a>
         <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
           <button class="btn btn-secondary" type="submit"><i class="fas fa-trash-alt"></i></button>
         </form>
@@ -52,9 +56,4 @@
     </div>
   </li>
   {{/each}}
-  <li class="list-group-item">
-    <div class="row justify-content-center">
-      <a href="./records/new" class="btn btn-outline-dark col-auto"><i class="fas fa-plus"></i></a>
-    </div>
-  </li>
 </ul>
