@@ -1,36 +1,49 @@
-<div class="">
-  <span>*必填欄位</span>
-  <span>請輸入你的支出</span>
-  <form action="/records" method="POST">
-    <p>
-      <label>名稱*：
-        <input type="text" placeholder="name" name="name">
-      </label>
-    </p>
-    <p>
-      <label>日期*：
-        <input type="date" placeholder="date" name="date">
-      </label>
-    </p>
-    <p>
-      <label>類別*：
-        <select name="category">
-          <option value="" disabled selected hidden>請選擇</option>
-          <option value="家居物業">家居物業</option>
-          <option value="交通出行">交通出行</option>
-          <option value="休閒娛樂">休閒娛樂</option>
-          <option value="餐飲食品">餐飲食品</option>
-          <option value="其他">其他</option>
-        </select>
-      </label>
-    </p>
-    <p>
-      <label>金額*：
-        <input type="text" placeholder="amount" name="amount">
-      </label>
-    </p>
-
-    <button type="submit" class="btn btn-outline-dark">新增支出</button>
-    <a href="/" class="btn btn-secondary">back</a>
-  </form>
-</div>
+<form action="/records" method="POST">
+  <ul class="list-group pl-0" style="width:300px;">
+    <li class="list-group-item">
+      <div class="row justify-content-between">
+        <span>*必填欄位</span>
+        <span>請輸入你的支出</span>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <p>
+        <label>名稱*：
+          <input type="text" placeholder="name" name="name" required>
+        </label>
+      </p>
+    </li>
+    <li class="list-group-item">
+      <p>
+        <label>日期*：
+          <input type="date" placeholder="date" name="date" required>
+        </label>
+      </p>
+    </li>
+    <li class="list-group-item">
+      <p>
+        <label>類別*：
+          <select name="category" required>
+            <option value="" disabled selected hidden>請選擇</option>
+            <option value="家居物業">家居物業</option>
+            <option value="交通出行">交通出行</option>
+            <option value="休閒娛樂">休閒娛樂</option>
+            <option value="餐飲食品">餐飲食品</option>
+            <option value="其他">其他</option>
+          </select>
+        </label>
+      </p>
+    </li>
+    <li class="list-group-item">
+      <p>
+        <label>金額*：
+          <input type="text" placeholder="amount" name="amount" required>
+        </label>
+      </p>
+    </li>
+    <li class="list-group-item">
+      <button type="submit" class="btn btn-outline-dark">新增支出</button>
+      <a href="/" class="btn btn-secondary">back</a>
+    </li>
+  </ul>
+</form>

@@ -1,6 +1,6 @@
 <ul class="list-group pl-0" style="width:600px;">
   <li class="list-group-item">
-    <div class="row">
+    <div class="row justify-content-between">
       <div class="col-3 row align-items-center justify-content-center">
         <form action="/filter" method="GET" class="">
           <select name="filter" onchange="this.form.submit()">
@@ -13,11 +13,18 @@
           </select>
         </form>
       </div>
-      <div class="col-6 mx-auto row justify-content-center">
+      <div class="input-group col-6 px-0">
+        <div class="input-group-prepend">
+          <span class="input-group-text bg-white border-0" style="font-size: 30px;" id="basic-addon1">總金額</span>
+        </div>
+        <input type="text" class="form-control bg-white text-danger text-center border-0" style="font-size: 40px;"
+          value="{{total}}" disabled aria-describedby="basic-addon1">
+      </div>
+      {{!-- <div class="col-6 mx-auto row justify-content-center">
         <p class="mb-0 align-self-center">總金額：</p>
         <input type="text" name="" class="bg-white border-0 text-danger text-center"
           style="font-size: 40px; width:190px;" value="{{total}}" disabled>
-      </div>
+      </div> --}}
       <div class="col-3 my-auto">
         <a href="./records/new" class="btn btn-outline-dark col-11"><i class="fas fa-plus"></i></a>
       </div>
@@ -25,7 +32,7 @@
   </li>
   {{#each recordsWithIcon}}
   <li class="list-group-item">
-    <div class="row">
+    <div class="row  justify-content-between">
       <div class="col-3 row justify-content-center align-self-center">
         <h2 class="mb-0"><i class="{{this.icon}}"></i></h2>
       </div>
