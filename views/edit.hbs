@@ -1,31 +1,47 @@
-<form action="/records/{{ record._id }}?_method=PUT" method="POST">
-  <p>
-    <label>名稱*：
-      <input type="text" placeholder="name" name="name" value="{{ record.name }}">
-    </label>
-  </p>
-  <p>
-    <label>日期*：
-      <input type="date" name="date" value="{{ record.date }}">
-    </label>
-  </p>
-  <p>
-    <label>類別*：
-      <select name="category">
-        <option value="家居物業" {{#if options.home }} selected {{/if}}>家居物業</option>
-        <option value="交通出行" {{#if options.transportation }} selected {{/if}}>交通出行</option>
-        <option value="休閒娛樂" {{#if options.entertainment }} selected {{/if}}>休閒娛樂</option>
-        <option value="餐飲食品" {{#if options.food }} selected {{/if}}>餐飲食品</option>
-        <option value="其他" {{#if options.other }} selected {{/if}}>其他</option>
-      </select>
-    </label>
-  </p>
-  <p>
-    <label>金額*：
-      <input type="text" placeholder="amount" name="amount" value="{{ record.amount }}">
-    </label>
-  </p>
-
-  <button type="submit" class="btn btn-outline-dark">Save</button>
-  <a href="/" class="btn btn-secondary">back</a>
-</form>
+<div class="list-group-item">
+  <div class="container px-4 py-3">
+    <form action="/records/{{ record._id }}?_method=PUT" method="POST">
+      <div class="row" style="width:300px;">
+        <div class="col-12 mb-4">
+          <div class="row justify-content-between">
+            <span>*必填欄位</span>
+            <div class="col-9 row justify-content-end">
+              <button type="submit" class="btn btn-outline-dark mr-3"><i class="fas fa-pen"></i></button>
+              <a href="/" class="btn btn-secondary"><i class="fas fa-times"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-4" style="font-size: 20px;">
+          <label class="row justify-content-between">
+            <span class="col-4 pl-0"> 名稱* ：</span>
+            <input type="text" name="name" class="col-8" value="{{ record.name }}" required>
+          </label>
+        </div>
+        <div class="col-12 mb-4" style="font-size: 20px;">
+          <label class="row justify-content-between">
+            <span class="col-4 pl-0">日期* ：</span>
+            <input type="date" name="date" class="col-8" value="{{ record.date }}" required>
+          </label>
+        </div>
+        <div class="col-12 mb-4" style="font-size: 20px;">
+          <label class="row justify-content-between">
+            <span class="col-4 pl-0">類別* ：</span>
+            <select name="category" class="col-8" required>
+              <option value="家居物業" {{#if options.home }} selected {{/if}}>家居物業</option>
+              <option value="交通出行" {{#if options.transportation }} selected {{/if}}>交通出行</option>
+              <option value="休閒娛樂" {{#if options.entertainment }} selected {{/if}}>休閒娛樂</option>
+              <option value="餐飲食品" {{#if options.food }} selected {{/if}}>餐飲食品</option>
+              <option value="其他" {{#if options.other }} selected {{/if}}>其他</option>
+            </select>
+          </label>
+        </div>
+        <div class="col-12" style="font-size: 20px;">
+          <label class="row justify-content-between">
+            <span class="col-4 pl-0">金額* ：</span>
+            <input type="text" name="amount" class="col-8" value="{{ record.amount }}" required>
+          </label>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
