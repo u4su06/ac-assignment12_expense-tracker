@@ -1,21 +1,30 @@
 <form action="/records" method="POST">
-  <div class="row" style="width:400px;">
-    <div class="col-12 mb-4 row justify-content-between">
-      <span>*必填欄位</span>
+  <div class="row" style="width:300px;">
+    <div class="col-12 mb-4">
+      <div class="row justify-content-between">
+        <span>*必填欄位</span>
+        <div class="col-9 row justify-content-end">
+          <button type="submit" class="btn btn-outline-dark mr-3 col-6"><i class="fas fa-plus"></i></button>
+          <a href="/" class="btn btn-secondary"><i class="fas fa-times"></i></a>
+        </div>
+      </div>
     </div>
-    <div class="col-12 mb-3 row" style="font-size: 20px;">
-      <label class="col-12">名稱*：
-        <input type="text" name="name" style="width: 250px;" required>
+    <div class="col-12 mb-4" style="font-size: 20px;">
+      <label class="row justify-content-between">
+        <span class="col-4 pl-0"> 名稱* ：</span>
+        <input type="text" name="name" class="col-8" required>
       </label>
     </div>
-    <div class="col-12 mb-3 row" style="font-size: 20px;">
-      <label class="col-12">日期*：
-        <input type="date" placeholder="date" name="date" style="width: 250px;" required>
+    <div class="col-12 mb-4" style="font-size: 20px;">
+      <label class="row justify-content-between">
+        <span class="col-4 pl-0">日期* ：</span>
+        <input type="date" name="date" class="col-8" required>
       </label>
     </div>
-    <div class="col-12 mb-3 row" style="font-size: 20px;">
-      <label class="col-12">類別*：
-        <select name="category" style="width: 250px;" required>
+    <div class="col-12 mb-4" style="font-size: 20px;">
+      <label class="row justify-content-between">
+        <span class="col-4 pl-0">類別* ：</span>
+        <select name="category" class="col-8" required>
           <option value="" disabled selected hidden>請選擇</option>
           <option value="家居物業">家居物業</option>
           <option value="交通出行">交通出行</option>
@@ -25,16 +34,11 @@
         </select>
       </label>
     </div>
-    <div class="col-12 mb-4 row" style="font-size: 20px;">
-      <label class="col-12">金額*：
-        <input type="text" name="amount" style="width: 250px;" required>
+    <div class="col-12" style="font-size: 20px;">
+      <label class="row justify-content-between">
+        <span class="col-4 pl-0">金額* ：</span>
+        <input type="text" name="amount" class="col-8" required>
       </label>
-    </div>
-    <div class="col-12 row justify-content-end">
-
-      <button type="submit" class="btn btn-outline-dark mr-3 col-3"><i class="fas fa-plus"></i></button>
-      <a href="/" class="btn btn-secondary mr-4"><i class="fas fa-times"></i></a>
-
     </div>
   </div>
 </form>
